@@ -92,12 +92,12 @@ buttonHtml.addEventListener("click", function () {
         </div>
         <div class="details">
             <div class="user-name">${data.myProfile.details.name} ${data.myProfile.details.surname}</div>
-            <div class="post-date">${correntDate}</div>
+            <div class="post-date">${data.myProfile.posts[4].date}</div>
         </div>
         
     </div> 
     <div class="post-text">
-        ${newText}
+        ${data.myProfile.posts[4].text}
     </div>
     `
 
