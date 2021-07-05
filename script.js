@@ -77,14 +77,12 @@ buttonHtml.addEventListener("click", function () {
     let correntDate = "05/07/2021";
     const check = document.querySelector('.text');
     let newText = check.value;
-     
     data.myProfile.posts.push({     
         text: newText,
         date: correntDate     
     })
 
     check.value = ""; 
-
     let newObjets = `    
     <div class="post-details"> 
         <div class="user-pic">
