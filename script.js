@@ -70,36 +70,39 @@ data.myProfile.posts.forEach((post) => {
     
     postListHtml.innerHTML += `<div class="post"> ${postHtml} </div>`
 }) 
-function addPosts(params) {
-    let newText = document.getElementById('text').value;
+const buttonHtml = document.querySelector(".send");
 
-    console.log(newText);
+buttonHtml.addEventListener("click", function () {
 
-    data.myProfile.posts.push({
+    let correntDate = "05/07/2021";
+    const check = document.querySelector('.text');
+    let newText = check.value;
+     
+    data.myProfile.posts.push({     
         text: newText,
-        mediaPath: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Supernerd_%283262512306%29.jpg/1024px-Supernerd_%283262512306%29.jpg',
-        date: '17-06-2021',
-    })   
-    var postListHtml = document.querySelector(".post-list")
- 
-        // prepariamo la parte interna dell'elemento html .post
-        let postHtml = `
-        <div class="post-details"> 
-            <div class="user-pic">
-                <img src="${data.myProfile.details.pic}" alt="user pic">
-            </div>
-            <div class="details">
-                <div class="user-name">${data.myProfile.details.name} ${data.myProfile.details.surname}</div>
-                </div>
-            <div class="post-text">
-            ${data.myProfile.posts[4].date}
+        date: correntDate     
+    })
+
+    check.value = ""; 
+
+    let newObjets = `    
+    <div class="post-details"> 
+        <div class="user-pic">
+            <img src="${data.myProfile.details.pic}" alt="user pic">
         </div>
-        <div>
-        ${data.myProfile.posts[4].text}
+        <div class="details">
+            <div class="user-name">${data.myProfile.details.name} ${data.myProfile.details.surname}</div>
+            <div class="post-date">${correntDate}</div>
         </div>
-        `         
-    
-        postListHtml.innerHTML += `<div class="post"> ${postHtml} </div>`
-}
+        
+    </div> 
+    <div class="post-text">
+        ${newText}
+    </div>
+    `
+
+    postListHtml.innerHTML += `<div class="post"> ${newObjets} </div>`
+
+})
 
 
