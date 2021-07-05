@@ -79,7 +79,6 @@ function addPosts(params) {
         text: newText,
         mediaPath: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Supernerd_%283262512306%29.jpg/1024px-Supernerd_%283262512306%29.jpg',
         date: '17-06-2021',
-        
     })   
     var postListHtml = document.querySelector(".post-list")
  
@@ -94,6 +93,9 @@ function addPosts(params) {
                 </div>
             <div class="post-text">
             ${data.myProfile.posts[4].date}
+        </div>
+        <div>
+        ${data.myProfile.posts[4].text}
         </div>
         `         
     
