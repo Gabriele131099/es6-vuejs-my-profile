@@ -72,6 +72,7 @@ data.myProfile.posts.forEach((post) => {
 }) 
 const buttonHtml = document.querySelector(".send");
 
+let index = 4
 buttonHtml.addEventListener("click", function () {
 
     let correntDate = "05/07/2021";
@@ -81,7 +82,6 @@ buttonHtml.addEventListener("click", function () {
         text: newText,
         date: correntDate     
     })
-
     check.value = ""; 
     let newObjets = `    
     <div class="post-details"> 
@@ -90,17 +90,24 @@ buttonHtml.addEventListener("click", function () {
         </div>
         <div class="details">
             <div class="user-name">${data.myProfile.details.name} ${data.myProfile.details.surname}</div>
-            <div class="post-date">${data.myProfile.posts[4].date}</div>
+            <div class="post-date">${data.myProfile.posts[index].date}</div>
         </div>
         
     </div> 
     <div class="post-text">
-        ${data.myProfile.posts[4].text}
+        ${data.myProfile.posts[index].text}
+        <div style="cursor: pointer;" onclick="deletePosts()">Elimina</div>
+
     </div>
     `
 
     postListHtml.innerHTML += `<div class="post"> ${newObjets} </div>`
 
 })
+
+function deletePosts(){
+    myProfile.posts[index].split(index, 1)
+}
+
 
 
