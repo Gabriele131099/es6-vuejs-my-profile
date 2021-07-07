@@ -26,12 +26,24 @@ const data = {
         ]
     }
 };
+function addPostButton() {
+    var addPost = document.getElementById("addPost").value
+    console.log(addPost)
+
+    data.myProfile.posts.push({
+        text: addPost,
+        mediaPath: null,
+        date: '17-06-2021'
+    })
 
 
+    
+}
 var userDetailHtml = document.querySelector(".user-details")
+
 userDetailHtml.innerHTML = `
-<div class="user-pic"><img src="${data.myProfile.details.pic}" alt="user pic"></div>
-<div class="user-name">${data.myProfile.details.name} ${data.myProfile.details.surname} </div>
+    <div class="user-pic"><img src="${data.myProfile.details.pic}" alt="user pic"></div>
+    <div class="user-name">${data.myProfile.details.name} ${data.myProfile.details.surname} </div>
 `
 
 // in vuejs sarà: {{ myProfile.details.name }}
@@ -39,20 +51,20 @@ userDetailHtml.innerHTML = `
 var postListHtml = document.querySelector(".post-list")
 
 data.myProfile.posts.forEach((post) => {
-    
+
     // prepariamo la parte interna dell'elemento html .post
     let postHtml = `
     <div class="post-details"> 
-    <div class="user-pic">
-    <img src="${data.myProfile.details.pic}" alt="user pic">
-    </div>
-    <div class="details">
-    <div class="user-name">${data.myProfile.details.name} ${data.myProfile.details.surname}</div>
-    <div class="post-date">${post.date}</div>
-    </div>
+        <div class="user-pic">
+            <img src="${data.myProfile.details.pic}" alt="user pic">
+        </div>
+        <div class="details">
+            <div class="user-name">${data.myProfile.details.name} ${data.myProfile.details.surname}</div>
+            <div class="post-date">${post.date}</div>
+        </div>
     </div> 
     <div class="post-text">
-    ${post.text}
+        ${post.text}
     </div>
     ` 
     // solo se l'immagine esiste aggiungere a postHtml l'html del media
@@ -63,51 +75,10 @@ data.myProfile.posts.forEach((post) => {
         <img src="${post.mediaPath}" alt="media" />
         </div>`
     }
-    
+
     // adesso il nostro html preparato è il postHtml.
     // dobbiamo inserirlo nel suo container <div class="post"></div>
     // e il tutto dentro postListHtml.innerHtml.
-    
+
     postListHtml.innerHTML += `<div class="post"> ${postHtml} </div>`
 }) 
-const buttonHtml = document.querySelector(".send");
-
-let index = 4
-buttonHtml.addEventListener("click", function () {
-
-    let correntDate = "05/07/2021";
-    const check = document.querySelector('.text');
-    let newText = check.value;
-    data.myProfile.posts.push({     
-        text: newText,
-        date: correntDate     
-    })
-    check.value = ""; 
-    let newObjets = `    
-    <div class="post-details"> 
-        <div class="user-pic">
-            <img src="${data.myProfile.details.pic}" alt="user pic">
-        </div>
-        <div class="details">
-            <div class="user-name">${data.myProfile.details.name} ${data.myProfile.details.surname}</div>
-            <div class="post-date">${data.myProfile.posts[index].date}</div>
-        </div>
-        
-    </div> 
-    <div class="post-text">
-        ${data.myProfile.posts[index].text}
-        <div style="cursor: pointer;" onclick="deletePosts()">Elimina</div>
-
-    </div>
-    `
-
-    postListHtml.innerHTML += `<div class="post"> ${newObjets} </div>`
-
-})
-
-function deletePosts(){
-    myProfile.posts[index].split(index, 1)
-}
-
-
-
