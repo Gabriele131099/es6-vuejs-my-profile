@@ -4,6 +4,7 @@ new Vue(
     {
         el: '#profile-page',
         data: {
+            addText : '',
             myProfile: {
                 details: {
                     name: 'Pierfilippo',
@@ -27,9 +28,25 @@ new Vue(
                         text: 'Vi presento il mio amico Mimmo',
                         mediaPath: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Supernerd_%283262512306%29.jpg/1024px-Supernerd_%283262512306%29.jpg',
                         date: '17-06-2021'
-                    }
-                ]
-            }
+                    },
+                ],
+            }, 
         },
+        
+        methods:{
+
+           addPosts: function () {
+            
+            let correntDate = "07/07/2021";
+             
+            this.myProfile.posts.unshift({     
+                text: this.addText,
+                date: correntDate,    
+            });
+        
+            this.addText = ""; 
+        
+           },
+        }
     }
 );
